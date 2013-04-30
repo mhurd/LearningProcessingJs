@@ -1,5 +1,5 @@
 void setup() {
-    size(400, 300);
+    size(300, 200);
     generator = new Random();
 }
 
@@ -10,5 +10,5 @@ void draw() {
     float x = sd * num + mean;
     noStroke();
     fill(255,10);
-    ellipse(x,150,32,32);
+    ellipse(x,100,32,32);
 }

@@ -1,5 +1,8 @@
 class Walker {
 
+    int tx = 0;
+    int ty = 0;
+    int tz = 0;
     int x;
     int y;
 
@@ -9,21 +12,24 @@ class Walker {
     }
 
     void display() {
-        stroke(0);
-        point(x,y);
+        ellipse(x,y,10,10);
     }
 
     void step() {
-        int choice = int(random(4));
-        if (choice == 0) {
-            x++;
-        } else if (choice == 1) {
-            x--;
-        } else if (choice == 2) {
-            y++;
-        } else {
-            y--;
-        }
+        tx = tx + 0.01;
+        ty = ty + 0.01;
+        tz = tz + 0.01;
+        float xn = noise(tx);
+        float yn = noise(1000 + ty);
+        float zn = noise(2000 + tz);
+
+        x = map(xn,0,1,0,width);
+        y = map(yn,0,1,0,height);
+        float colorr = map(xn,0,1,0,255);
+        float colorg = map(yn,0,1,0,255);
+        float colorb = map(zn,0,1,0,255);
+
+        stroke(color(colorr, colorg, colorb));
     }
 
 }
@@ -31,7 +37,7 @@ class Walker {
 Walker w;
 
 void setup() {
-    size(400, 300);
+    size(300, 200);
     w = new Walker();
 }
 
