@@ -23,7 +23,7 @@ class Mover {
         PVector mouse = new PVector(mouseX, mouseY);
         PVector dir = PVector.sub(mouse,location);
         dir.normalize();
-        dir.mult(random(0.25));
+        dir.mult(0.4);
         acceleration = dir;
     }
 
